@@ -1,3 +1,5 @@
+
+</html>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -43,7 +45,7 @@
             background: linear-gradient(135deg, #FFF8F0 0%, #F5E6D3 100%);
             color: var(--text-dark);
             min-height: 100vh;
-            padding-bottom: 70px; /* Spazio per bottom nav */
+            padding-bottom: 120px; /* Spazio per bottom nav */
             overflow-x: hidden;
         }
 
@@ -81,6 +83,7 @@
 
         .section.active {
             display: block;
+			padding-bottom: 120px; /* ✅ AGGIUNGI QUESTA RIGA */
         }
 
         @keyframes fadeIn {
@@ -297,17 +300,27 @@
     font-size: 20px;
 }
 
-/* Tablet e Desktop */
+/* Desktop */
 @media (min-width: 769px) {
+    body {
+        padding-bottom: 120px;
+    }
+
     .bottom-nav {
+        position: fixed !important;
+        bottom: 0 !important;
         left: 50% !important;
         right: auto !important;
-        transform: translateX(-50%);
-        max-width: 700px;
-        width: calc(100% - 40px);
+        transform: translateX(-50%) !important;
+        width: 100% !important;
+        max-width: 700px !important;
+        border-top: 1px solid var(--border);
         border-radius: 12px 12px 0 0;
         border: 1px solid var(--border);
+        border-bottom: none;
     }
+}
+
 
     .bottom-nav button {
         padding: 12px 8px;
@@ -793,6 +806,11 @@
                 border-radius: 0;
             }
         }
+		
+		/* Spazio extra per l'ultima sezione prima della bottom nav */
+       #schede > div:last-child {
+    padding-bottom: 100px;
+    }
 
         /* Focus states */
         button:focus,
@@ -974,6 +992,7 @@
                                 <label>Fluidità</label>
                                 <select id="fluidita" required>
                                     <option value="">Seleziona</option>
+									<option value="Non Applicabile"> - </option>
                                     <option value="Scorrevole">Scorrevole</option>
                                     <option value="Poco denso">Poco denso</option>
                                     <option value="Denso">Denso</option>
@@ -985,6 +1004,7 @@
                                 <label>Grana del Perlage</label>
                                 <select id="effervescenza1" required>
                                     <option value="">Seleziona</option>
+									<option value="Non Applicabile"> - </option>
                                     <option value="Molto Fine">Molto Fine</option>
                                     <option value="Fine">Fine</option>
                                     <option value="Grossolana">Grossolana</option>
@@ -996,6 +1016,7 @@
                             <label>Persistenza del Perlage</label>
                             <select id="effervescenza2" required>
                                 <option value="">Seleziona</option>
+								<option value="Non Applicabile"> - </option>
                                 <option value="Evanescente">Evanescente </option>
                                 <option value="Persistente">Persistente</option>
                                 <option value="Molto persistente">Molto persistente</option>
@@ -1056,153 +1077,189 @@
 
                         <div class="form-group">
                             <label>Natura dei profumi</label>
-                            <textarea id="descrizione-olfattiva" required placeholder="Fruttato, Floreale, Speziato..." style="min-height: 80px;"></textarea>
+                            <textarea id="descrizione-olfattiva" placeholder="Fruttato, Floreale, Speziato..." style="min-height: 80px;"></textarea>
                         </div>
                     </div>
+
 
                     <!-- ESAME GUSTATIVO -->
-                    <div class="tasting-section gustatory">
-                        <h4>👅 ESAME GUSTATIVO</h4>
+<div class="tasting-section gustatory">
+    <h4>👅 ESAME GUSTATIVO</h4>
 
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Corpo</label>
-                                <select id="corpo" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Leggero">Leggero</option>
-                                    <option value="Di corpo">Di corpo</option>
-                                    <option value="Strutturato">Strutturato</option>
-                                    <option value="Robusto">Robusto</option>
-                                </select>
-                            </div>
+    <div class="grid-2">
+        <div class="form-group">
+            <label>Corpo</label>
+            <select id="corpo" required>
+                <option value="">Seleziona</option>
+                <option value="Leggero">Leggero</option>
+                <option value="Di corpo">Di corpo</option>
+                <option value="Strutturato">Strutturato</option>
+                <option value="Robusto">Robusto</option>
+            </select>
+        </div>
 
-                            <div class="form-group">
-                                <label>Alcoolicità</label>
-                                <select id="alcolicita" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Debole">Debole</option>
-                                    <option value="Leggero">Leggero</option>
-                                    <option value="Caldo">Caldo</option>
-                                    <option value="Molto caldo">Molto caldo</option>
-                                    <option value="Alcolico">Alcolico</option>
-                                </select>
-                            </div>
-                        </div>
+        <div class="form-group">
+            <label>Alcoolicità</label>
+            <select id="alcolicita" required>
+                <option value="">Seleziona</option>
+                <option value="Debole">Debole</option>
+                <option value="Leggero">Leggero</option>
+                <option value="Caldo">Caldo</option>
+                <option value="Molto caldo">Molto caldo</option>
+                <option value="Alcolico">Alcolico</option>
+            </select>
+        </div>
+    </div>
 
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Morbidezza</label>
-                                <select id="morbidezza" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Poco morbido">Poco morbido</option>
-                                    <option value="Morbido">Morbido</option>
-                                    <option value="Pastoso">Pastoso</option>
-                                    <option value="Grasso">Grasso</option>
-                                </select>
-                            </div>
+    <div class="grid-2">
+        <div class="form-group">
+            <label>Morbidezza</label>
+            <select id="morbidezza" required>
+                <option value="">Seleziona</option>
+                <option value="Poco morbido">Poco morbido</option>
+                <option value="Morbido">Morbido</option>
+                <option value="Pastoso">Pastoso</option>
+                <option value="Grasso">Grasso</option>
+            </select>
+        </div>
 
-                            <div class="form-group">
-                                <label>Zuccheri</label>
-                                <select id="zuccheri" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Secco">Secco</option>
-                                    <option value="Abboccato">Abboccato</option>
-                                    <option value="Amabile">Amabile</option>
-                                    <option value="Dolce">Dolce</option>
-                                    <option value="Molto Dolce">Molto Dolce</option>
-                                </select>
-                            </div>
-                        </div>
+        <div class="form-group">
+            <label>Zuccheri</label>
+            <select id="zuccheri" required>
+                <option value="">Seleziona</option>
+                <option value="Secco">Secco</option>
+                <option value="Abboccato">Abboccato</option>
+                <option value="Amabile">Amabile</option>
+                <option value="Dolce">Dolce</option>
+                <option value="Molto Dolce">Molto Dolce</option>
+            </select>
+        </div>
+    </div>
 
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Acidità</label>
-                                <select id="acidita" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Scarno">Scarno</option>
-                                    <option value="Fresco">Fresco</option>
-                                    <option value="Fresco vivo">Fresco vivo</option>
-                                    <option value="Acerbo">Acerbo</option>
-                                </select>
-                            </div>
+    <div class="grid-2">
+        <div class="form-group">
+            <label>Acidità</label>
+            <select id="acidita" required>
+                <option value="">Seleziona</option>
+                <option value="Scarno">Scarno</option>
+                <option value="Fresco">Fresco</option>
+                <option value="Fresco vivo">Fresco vivo</option>
+                <option value="Acerbo">Acerbo</option>
+            </select>
+        </div>
 
-                            <div class="form-group">
-                                <label>Sapidità</label>
-                                <select id="sapidita" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Non percettibile">Non percettibile</option>
-                                    <option value="Leggermente sapido">Leggermente sapido</option>
-                                    <option value="Sapido">Sapido</option>
-                                    <option value="Molto Sapido">Molto Sapido</option>
-                                </select>
-                            </div>
-                        </div>
+        <div class="form-group">
+            <label>Sapidità</label>
+            <select id="sapidita" required>
+                <option value="">Seleziona</option>
+                <option value="Non percettibile">Non percettibile</option>
+                <option value="Leggermente sapido">Leggermente sapido</option>
+                <option value="Sapido">Sapido</option>
+                <option value="Molto Sapido">Molto Sapido</option>
+            </select>
+        </div>
+    </div>
 
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Tannicità</label>
-                                <select id="tannicita" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Poco tannico">Poco tannico</option>
-                                    <option value="Giustamente tannico">Giustamente tannico</option>
-                                    <option value="Tannico">Tannico</option>
-                                    <option value="Allappante">Allappante</option>
-                                </select>
-                            </div>
+    <div class="grid-2">
+        <div class="form-group">
+            <label>Tannicità</label>
+            <select id="tannicita" required>
+                <option value="">Seleziona</option>
+                <option value="Non Applicabile"> - </option>
+                <option value="Poco tannico">Poco tannico</option>
+                <option value="Giustamente tannico">Giustamente tannico</option>
+                <option value="Tannico">Tannico</option>
+                <option value="Allappante">Allappante</option>
+            </select>
+        </div>
 
-                            <div class="form-group">
-                                <label>Equilibrio</label>
-                                <select id="equilibrio" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Disarmonico">Disarmonico</option>
-                                    <option value="Leggermente disarmonico">Leggermente disarmonico</option>
-                                    <option value="Equilibrato">Equilibrato</option>
-                                    <option value="Armonico">Armonico</option>
-                                </select>
-                            </div>
-                        </div>
+        <div class="form-group">
+            <label>Equilibrio</label>
+            <select id="equilibrio" required>
+                <option value="">Seleziona</option>
+                <option value="Disarmonico">Disarmonico</option>
+                <option value="Leggermente disarmonico">Leggermente disarmonico</option>
+                <option value="Equilibrato">Equilibrato</option>
+                <option value="Armonico">Armonico</option>
+            </select>
+        </div>
+    </div>
 
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Persistenza PAI</label>
-                                <select id="persistenza" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Poco persistente">Poco persistente</option>
-                                    <option value="Persistente">Persistente</option>
-                                    <option value="Molto persistente">Molto persistente</option>
-                                </select>
-                            </div>
+    <div class="form-group">
+        <label>Stato Evolutivo</label>
+        <select id="stato-evolutivo" required>
+            <option value="">Seleziona</option>
+            <option value="Giovane">Giovane</option>
+            <option value="Pronto">Pronto</option>
+            <option value="Maturo">Maturo</option>
+            <option value="Evoluto">Evoluto</option>
+            <option value="Passato">Passato</option>
+        </select>
+    </div>
+</div>
 
-                            <div class="form-group">
-                                <label>Stato Evolutivo</label>
-                                <select id="stato-evolutivo" required>
-                                    <option value="">Seleziona</option>
-                                    <option value="Giovane">Giovane</option>
-                                    <option value="Pronto">Pronto</option>
-                                    <option value="Maturo">Maturo</option>
-                                    <option value="Evoluto">Evoluto</option>
-                                    <option value="Passato">Passato</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+<!-- SENSAZIONI RETRO OLFATTIVE -->
+<div class="tasting-section">
+    <h4>👃 SENSAZIONI RETRO OLFATTIVE</h4>
 
-                    <!-- CONSIDERAZIONI FINALI -->
-                    <div class="tasting-section">
-                        <h4>✍️ CONSIDERAZIONI FINALI</h4>
+    <div class="grid-2">
+        <div class="form-group">
+            <label>Intensità</label>
+            <select id="intensita-retro" required>
+                <option value="">Seleziona</option>
+                <option value="Tenue">Tenue</option>
+                <option value="Poco intenso">Poco intenso</option>
+                <option value="Intenso">Intenso</option>
+                <option value="Molto intenso">Molto intenso</option>
+            </select>
+        </div>
 
-                        <div class="form-group">
-                            <label>Abbinamento Consigliato</label>
-                            <input type="text" id="abbinamento" required placeholder="es. Brasato al Barolo">
-                        </div>
+        <div class="form-group">
+            <label>Qualità</label>
+            <select id="qualita-retro" required>
+                <option value="">Seleziona</option>
+                <option value="Comune">Comune</option>
+                <option value="Mediamente fine">Mediamente fine</option>
+                <option value="Fine">Fine</option>
+                <option value="Molto Fine">Molto Fine</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Natura degli Aromi</label>
+        <textarea id="natura-aromi" placeholder="Fruttato, Floreale, Speziato......" style="min-height: 70px;"></textarea>
+    </div>
 
-                        <div class="form-group">
-                            <label>Note Personali</label>
-                            <textarea id="note-personali" placeholder="Osservazioni personali..." style="min-height: 70px;"></textarea>
-                        </div>
-                    </div>
+    <div class="form-group">
+        <label>Persistenza PAI</label>
+        <select id="persistenza" required>
+            <option value="">Seleziona</option>
+            <option value="Poco persistente">Poco persistente</option>
+            <option value="Persistente">Persistente</option>
+            <option value="Molto persistente">Molto persistente</option>
+        </select>
+    </div>
+</div>
 
-                    <div class="btn-group">
+
+<!-- CONSIDERAZIONI FINALI -->
+<div class="tasting-section">
+    <h4>✍️ CONSIDERAZIONI FINALI</h4>
+
+    <div class="form-group">
+        <label>Abbinamento Consigliato</label>
+        <input type="text" id="abbinamento" placeholder="es. Brasato al Barolo">
+    </div>
+
+    <div class="form-group">
+        <label>Note Personali</label>
+        <textarea id="note-personali" placeholder="Osservazioni personali..." style="min-height: 70px;"></textarea>
+    </div>
+</div>
+
+
+                <div class="btn-group">
                         <button type="submit" class="btn btn-primary">💾 Salva</button>
                         <button type="reset" class="btn btn-secondary">🔄 Cancella</button>
                     </div>
@@ -2535,7 +2592,8 @@
 		{"paese": "USA", "regione": "New York", "denominazione": "Cayuga Lake AVA", "livello": "Sottozona", "note": "Bianco/Spumante. Riesling, Chardonnay. Lago Cayuga. Vini freschi spumanti metodo classico."},
 		{"paese": "USA", "regione": "New York", "denominazione": "Seneca Lake AVA", "livello": "Sottozona", "note": "Bianco/Rosso. Riesling, Chardonnay, Pinot Noir sperimentale. Lago Seneca profondo microclima. Vini freschi equilibrati."},
 		{"paese": "USA", "regione": "New York", "denominazione": "Hudson Valley AVA", "livello": "AVA", "note": "Bianco dominante. Chardonnay, varietà ibride. Nord New York. Vini freschi leggeri."},
-		{"paese": "USA", "regione": "New York", "denominazione": "Long Island AVA (New York)", "livello": "AVA", "note": "Rosso/Bianco. Cabernet, Merlot, Chardonnay. Clima marino temperato moderato. Vini eleganti bilanciati. Emergente qualità USA est."},
+		{"paese": "USA", "regione": "New York", "denominazione": "Long Island AVA (New York)", "livello": "AVA", "note": "Rosso/Bianco. Cabernet, Merlot, Chardonnay. Clim
+a marino temperato moderato. Vini eleganti bilanciati. Emergente qualità USA est."},
 		{"paese": "USA", "regione": "Virginia", "denominazione": "Middleburg AVA", "livello": "AVA", "note": "Rosso/Bianco. Viognier, Sauvignon Blanc, Chardonnay (bianchi), Cabernet Franc, Malbec, Syrah, Merlot, Cabernet Sauvignon (rossi). Nord Virginia vicino Washington D.C. Stabilita 2012. Vini equilibrati varietà."},
 		{"paese": "USA", "regione": "Virginia", "denominazione": "Monticello AVA", "livello": "AVA", "note": "Rosso/Bianco. Cabernet Franc STELLA, Chardonnay, Viognier. Blue Ridge Mountains oriental slopes. 1984 prima AVA Virginia (storica). Charlottesville. Piedmont Centrale. Cabernet Franc eccellente varietà Virginia 'firma'. Terreni argilla granite-based. Invecchiamento 10-20 anni. Thomas Jefferson storia 1774."},
 		{"paese": "USA", "regione": "Virginia", "denominazione": "Shenandoah Valley AVA", "livello": "AVA", "note": "Rosso/Bianco. Varietà vini Pinot Noir, Riesling, Chardonnay, Cabernet Sauvignon, Cabernet Franc, ibridi Traminette, Chambourcin, Norton. MAGGIORE AVA Virginia. 2.4 milioni acri. Condivisa Virginia+West Virginia. Bounded Blue Ridge Mountains est, Appalachian Plateaus west. Terreni calcare. Clima temperato secco fresco-alto acidi. 1982 prima AVA Virginia nazione (25°)."},
@@ -2647,7 +2705,7 @@
         {domanda: "Indica, in scala, la successione della percezione dei sapori:", is_multiple: true, opzioni: ["salato-acido-dolce-amaro", "Dolce-amaro-acido-salato", "Salato-dolce-amaro-acido", "amaro-salato-dolce-acido", "dolce-acido-salato-amaro"], risposta: "dolce-acido-salato-amaro", categoria: "Degustazione"},
         {domanda: "Che cosa si assaggia durante una degustazione verticale?", is_multiple: true, opzioni: ["vini scelti da diversi produttori", "vini della stessa annata dello stesso produttore", "diverse annate di uno stesso vino", "vini scelti da un solo produttore", "vini della stessa annata di produttori diversi"], risposta: "diverse annate di uno stesso vino", categoria: "Degustazione"},
         {domanda: "Quali sostanze sono responsabili del colore rosso in un vino:", is_multiple: true, opzioni: ["Flavoni", "Terpeni", "Antociani", "Leuconi", "Xantofille"], risposta: "Antociani", categoria: "Degustazione"},
-        {domanda: "Qual è il significato del termine 'blanc de noir'?", is_multiple: true, opzioni: ["con uve cosiddette 'grigie'", "con uve bianche e rosse vinificate assieme", "con uve rosse vinificate in bianco", "con uve bianche vinificate in rosso", "con uve rosse vinificate in rosato"], risposta: "con uve rosse vinificate in bianco", categoria: "Tipologie di Vini"},
+        {domanda: "Qual è il significato del termine 'blanc de noir'?", is_multiple: true, opzioni: ["con uve cosiddette 'grigie'", "con uve bianche e rosse vinificate assieme", "con uve rosse vinificate in bianco", "con uve bianche vinificate in rosso", "con uve rosse vinificate in rosato"], risposta: "con uve rosse vinificate in bianco", categoria: "Enologia e Vinificazione"},
         {domanda: "Quale trasformazione determina a livello di composizione del vino, la fermentazione malolattica?", is_multiple: true, opzioni: ["acido malico in acido tartarico", "acido malico in acido lattico", "acido acetico in acido lattico", "acido citrico in acido lattico", "acido malico in acido acetico"], risposta: "acido malico in acido lattico", categoria: "Enologia e Vinificazione"},
         {domanda: "Che cosa indica la sigla Ph?", is_multiple: false, risposta: "Ph significa potenziale idrogenionico ed è l'agente chimico fisico compositivo del vino", categoria: "Enologia e Vinificazione"},
         {domanda: "Che cos'è il liqueur de tirage?", is_multiple: false, risposta: "E un liquido a base di zucchero e lieviti aggiunto al vino prima della rifermentazione", categoria: "Enologia e Vinificazione"},
@@ -2656,7 +2714,7 @@
 {domanda: "Corvina, Rondinella e Molinara sono i principali vitigni usati per la produzione di quale tra questi vini?", is_multiple: true, opzioni: ["Franciacorta", "Valpolicella", "Soave", "San Colombano", "Gambellara"], risposta: "Valpolicella", categoria: "Denominazioni"},
 {domanda: "A quale componente sono dovute le principali precipitazioni che si possono verificare nei vini in bottiglia?", is_multiple: false, risposta: "All'acido tartarico", categoria: "Enologia e Vinificazione"},
 {domanda: "Come vengono classificati i vini secondo la recente OCM?", is_multiple: false, risposta: "Vini a denominazione di origine e Vini non a denominazione di origine", categoria: "Normative e Classificazioni"},
-{domanda: "Quando un vino si definisce liquoroso?", is_multiple: false, risposta: "Quando è stato addizionato di alcol e supera i 16 gradi alcolici effettivi", categoria: "Tipologie di Vini"},
+{domanda: "Quando un vino si definisce liquoroso?", is_multiple: false, risposta: "Quando è stato addizionato di alcol e supera i 16 gradi alcolici effettivi", categoria: "Enologia e Vinificazione"},
 {domanda: "Cosa indicano i termini: Classico Superiore Riserva, se espressi in etichetta?", is_multiple: false, risposta: "CLASSICO: La zona di origine più antica - RISERVA: Con un invecchiamento minimo - SUPERIORE: Ha un titolo alcolometrico superiore", categoria: "Normative e Classificazioni"},
 {domanda: "In quale Paese ha avuto origine la produzione del Gin?", is_multiple: false, risposta: "Olanda", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è la regione della Francia in cui si distilla il Calvados?", is_multiple: true, opzioni: ["Guascogna", "Dordogna", "Alsazia", "Bretagna", "Normandia"], risposta: "Normandia", categoria: "Enologia e Vinificazione"},
@@ -2669,7 +2727,7 @@
 {domanda: "Cos'è un disciplinare di produzione?", is_multiple: false, risposta: "Il disciplinare è un insieme di regole che stabiliscono quali e quanti vitigni si possono utilizzare", categoria: "Normative e Classificazioni"},
 {domanda: "Nella normativa italiana per quali vini è consentito lo zuccheraggio?", is_multiple: false, risposta: "Solo ed esclusivamente per la preparazione di alcuni vini speciali e degli spumanti", categoria: "Normative e Classificazioni"},
 {domanda: "Cosa è una degustazione cieca?", is_multiple: false, risposta: "Degustazione di vini non riconoscibili (per etichetta, tipologia e marca) dall'assaggiatore", categoria: "Degustazione"},
-{domanda: "Che cosa caratterizza uno spumante millesimato?", is_multiple: false, risposta: "Fatto con vini di un'unica annata", categoria: "Tipologie di Vini"},
+{domanda: "Che cosa caratterizza uno spumante millesimato?", is_multiple: false, risposta: "Fatto con vini di un'unica annata", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è la Follatura?", is_multiple: false, risposta: "Rottura del cappello delle vinacce", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è il Batonnage?", is_multiple: false, risposta: "La rimessa in sospensione dei fondi del vino", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è il Girato?", is_multiple: false, risposta: "E' una malattia che provoca la distruzione dell'acido tartarico da parte di batteri lattici", categoria: "Enologia e Vinificazione"},
@@ -2697,17 +2755,17 @@
 {domanda: "Cos'è l'acescenza e quali vini normalmente colpisce?", is_multiple: false, risposta: "È una alterazione del vino dovuta a eccesso di acido acetico", categoria: "Enologia e Vinificazione"},
 {domanda: "Quale differenza passa tra un Marsala Vergine e uno Soleras?", is_multiple: true, opzioni: ["Il Soleras si ottiene con lieviti spagnoli", "Il Soleras ha un grado zuccherino più elevato", "Nessuna", "Il Vergine è ottenuto da sole uve rosse", "Il Vergine non può invecchiare in botte più di un anno"], risposta: "Nessuna", categoria: "Denominazioni"},
 {domanda: "In origine, con quale tipo di uve si otteneva il Vermouth?", is_multiple: false, risposta: "Moscato", categoria: "Enologia e Vinificazione"},
-{domanda: "Quali sono le indicazioni obbligatorie per legge in etichetta per un qualsiasi tipo di vino?", is_multiple: false, risposta: "La categoria, il nome e la sede dell'imbottigliatore, il contenuto in volume, il grado alcolico effettivo", categoria: "Tipologie di Vini"},
+{domanda: "Quali sono le indicazioni obbligatorie per legge in etichetta per un qualsiasi tipo di vino?", is_multiple: false, risposta: "La categoria, il nome e la sede dell'imbottigliatore, il contenuto in volume, il grado alcolico effettivo", categoria: "Enologia e Vinificazione"},
 {domanda: "Quando un vino può definirsi Superiore?", is_multiple: false, risposta: "Quando ha una gradazione alcolica superiore di almeno 0,5 gradi rispetto alla base", categoria: "Normative e Classificazioni"},
-{domanda: "A che cosa serve maltare l'orzo prima di utilizzarlo nella produzione del whisky?", is_multiple: true, opzioni: ["A conferire maggiore morbidezza al whisky", "A conferire profumi tostati al whisky stesso", "A sanificarlo prima della fermentazione per evitare la presenza di odori sgradevoli", "A far assumer al distillato un lucente color dorato intenso", "A trasformare gli zuccheri infermentescibili in zuccheri in grado di essere fermentati"], risposta: "A trasformare gli zuccheri infermentescibili in zuccheri in grado di essere fermentati", categoria: "Servizio"},
+{domanda: "A che cosa serve maltare l'orzo prima di utilizzarlo nella produzione del whisky?", is_multiple: true, opzioni: ["A conferire maggiore morbidezza al whisky", "A conferire profumi tostati al whisky stesso", "A sanificarlo prima della fermentazione per evitare la presenza di odori sgradevoli", "A far assumer al distillato un lucente color dorato intenso", "A trasformare gli zuccheri infermentescibili in zuccheri in grado di essere fermentati"], risposta: "A trasformare gli zuccheri infermentescibili in zuccheri in grado di essere fermentati", categoria: "Enologia e Vinificazione"},
 {domanda: "Le vinacce da uve a bacca bianca, prima di essere distillate per la produzione di grappa, devono:", is_multiple: true, opzioni: ["fatte fermentare", "essere private dei vinaccioli", "fatte appassire", "addizionate di glucosio e/o saccarosio", "miscelate con vinacce da uva a bacca nera"], risposta: "essere private dei vinaccioli", categoria: "Viticoltura"},
 {domanda: "Indica la differenza fra spunto ed acescenza in un vino", is_multiple: false, risposta: "Sono alterazioni del vino, una è in successione all'altra", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è il vino base con cui si produce il Vermouth?", is_multiple: false, risposta: "Vino bianco neutro", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è il ruolo dell'anidride solforosa nel vino?", is_multiple: false, risposta: "Protegge il mosto dall'ossidazione e impedisce fermentazioni anomale", categoria: "Enologia e Vinificazione"},
-{domanda: "Quando uno Spumante può fregiarsi della dizione Millesimato?", is_multiple: false, risposta: "Quando è prodotto con vini derivanti da uve vendemmiate nella stessa annata", categoria: "Tipologie di Vini"},
+{domanda: "Quando uno Spumante può fregiarsi della dizione Millesimato?", is_multiple: false, risposta: "Quando è prodotto con vini derivanti da uve vendemmiate nella stessa annata", categoria: "Enologia e Vinificazione"},
 {domanda: "Per quale motivo dalle uve attaccate dalla botrytis cinerea si ricavano mosti ad alto contenuto zuccherino?", is_multiple: false, risposta: "Perché la Botrytis cinerea crea lesioni sulla buccia che favoriscono l'evaporazione dell'acqua", categoria: "Viticoltura"},
 {domanda: "Che cos'è l'estratto secco di un vino?", is_multiple: false, risposta: "La parte solida che rimane dopo la completa evaporazione della parte liquida", categoria: "Enologia e Vinificazione"},
-{domanda: "Qual è la differenza tra uno Sherry fino ed uno Sherry oloroso?", is_multiple: false, risposta: "Lo Sherry fino è un vino addizionato di alcol fino a 15° che matura sotto flor; lo Sherry oloroso è oltre i 17° e matura senza flor", categoria: "Tipologie di Vini"},
+{domanda: "Qual è la differenza tra uno Sherry fino ed uno Sherry oloroso?", is_multiple: false, risposta: "Lo Sherry fino è un vino addizionato di alcol fino a 15° che matura sotto flor; lo Sherry oloroso è oltre i 17° e matura senza flor", categoria: "Enologia e Vinificazione"},
 {domanda: "Il Sommelier chi deve servire per primo a tavola?", is_multiple: false, risposta: "Il rappresentante del clero, poi l'autorità costituita e a seguire la signora più anziana", categoria: "Servizio"},
 {domanda: "Cosa si intende per olfazione diretta ed indiretta?", is_multiple: false, risposta: "L'olfazione diretta avviene per via nasale, quella indiretta per via retronasale", categoria: "Degustazione"},
 {domanda: "Cosa significa la sigla PAI?", is_multiple: false, risposta: "Persistenza aromatica intensa", categoria: "Degustazione"},
@@ -2728,8 +2786,8 @@
 {domanda: "Quali differenze sostanziali esistono fra la grappa italiana e la marc francese?", is_multiple: false, risposta: "Nessuna", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa viene distillato per ottenere la Vodka?", is_multiple: false, risposta: "Cereali (soprattutto grano), patate e barbabietole", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è la Poltiglia bordolese?", is_multiple: false, risposta: "Un antifungino a base di rame", categoria: "Viticoltura"},
-{domanda: "Che cos'è un Porto Vintage?", is_multiple: false, risposta: "Vino Porto di un'unica annata dichiarata", categoria: "Tipologie di Vini"},
-{domanda: "Elenca in ordine crescente, partendo dal più secco, le tipologie di vini spumanti", is_multiple: false, risposta: "Pas dosé/dosage zero/brut nature - extra brut - brut - extra dry - dry/sec - demi-sec - dolce o doux", categoria: "Tipologie di Vini"},
+{domanda: "Che cos'è un Porto Vintage?", is_multiple: false, risposta: "Vino Porto di un'unica annata dichiarata", categoria: "Enologia e Vinificazione"},
+{domanda: "Elenca in ordine crescente, partendo dal più secco, le tipologie di vini spumanti", is_multiple: false, risposta: "Pas dosé/dosage zero/brut nature - extra brut - brut - extra dry - dry/sec - demi-sec - dolce o doux", categoria: "Enologia e Vinificazione"},
 {domanda: "TCA è un termine usato in enologia: esponi il significato ed evidenzia il settore di riferimento", is_multiple: false, risposta: "Tricloroanisolo, responsabile del sapore e odore di tappo nel vino", categoria: "Enologia e Vinificazione"},
 {domanda: "Elenca almeno 3 obiettivi della pratica enologica chiamata refrigerazione", is_multiple: false, risposta: "Stabilizzazione, precipitazione tartarica, controllo della temperatura in fermentazione", categoria: "Enologia e Vinificazione"},
 {domanda: "E' vero che nel vino si può aggiungere acido tartarico, per aumentarne l'acidità totale?", is_multiple: false, risposta: "Sì, secondo normativa europea, fino a un massimo di 1,5 g per litro", categoria: "Enologia e Vinificazione"},
@@ -2738,9 +2796,9 @@
 {domanda: "Da che cosa è espresso l'equilibrio di un vino bianco?", is_multiple: false, risposta: "Dal rapporto tra acidità e morbidezza", categoria: "Degustazione"},
 {domanda: "Un vino allappante che cosa contiene in eccesso?", is_multiple: false, risposta: "Tannini", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa attacca e che cosa provoca nella vite la Peronospora?", is_multiple: false, risposta: "È un fungo che attacca tutte le parti verdi della vite, in particolare foglie e grappoli", categoria: "Viticoltura"},
-{domanda: "Quando si può mettere in commercio un vino novello?", is_multiple: false, risposta: "Dal 30 ottobre dell'anno della vendemmia", categoria: "Tipologie di Vini"},
+{domanda: "Quando si può mettere in commercio un vino novello?", is_multiple: false, risposta: "Dal 30 ottobre dell'anno della vendemmia", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è il Frangino?", is_multiple: false, risposta: "Un tovagliolo usato dal sommelier per asciugare il collo della bottiglia", categoria: "Servizio"},
-{domanda: "Parlando di spumanti, cos'è la cuvée?", is_multiple: false, risposta: "Una miscela di vini base diversi (per annata, vitigno o provenienza) preparata per la spumantizzazione", categoria: "Tipologie di Vini"},
+{domanda: "Parlando di spumanti, cos'è la cuvée?", is_multiple: false, risposta: "Una miscela di vini base diversi (per annata, vitigno o provenienza) preparata per la spumantizzazione", categoria: "Enologia e Vinificazione"},
 {domanda: "Le caratteristiche più importanti di un vino rosso destinato all'affinamento in botte sono:", is_multiple: true, opzioni: ["Tannini-alcool-astringenza", "Colore-alcool-tannini-acidità", "Colore struttura-acidità-zuccheri", "Contenuto polifenolico", "Struttura-tannini-acidità-alcool"], risposta: "Struttura-tannini-acidità-alcool", categoria: "Enologia e Vinificazione"},
 {domanda: "Parlando di Birra che cosa si intende per Ale?", is_multiple: false, risposta: "Birra prodotta con lieviti ad alta fermentazione", categoria: "Birra"},
 {domanda: "Quando un vino si definisce grasso?", is_multiple: false, risposta: "Quando è ricco di glicerina e alcoli, risultando viscoso e morbido al palato", categoria: "Degustazione"},
@@ -2758,15 +2816,16 @@
 {domanda: "Per un piatto succulento occorre un vino:", is_multiple: true, opzioni: ["Molto sapido", "Disequilibrato", "Molto morbido", "Molto fresco", "Ricco di alcool e/o di tannini"], risposta: "Ricco di alcool e/o di tannini", categoria: "Abbinamenti"},
 {domanda: "Che cosa abbineresti a dei crostini toscani?", is_multiple: true, opzioni: ["Vino Nobile di Montepulciano", "Barbaresco", "Carmignano", "Chianti Classico Riserva", "Chianti Colli Fiorentini"], risposta: "Chianti Colli Fiorentini", categoria: "Abbinamenti"},
 {domanda: "Quale vino abbineresti ad un cotechino caldo?", is_multiple: false, risposta: "Lambrusco", categoria: "Abbinamenti"},
-{domanda: "Quale vino abbineresti ad una zuppa di pesce alla marsigliese (Bouillabaisse)?", is_multiple: true, opzioni: ["Rosso di Montalcino 2015", "Sauternes 2014", "Pinot bianco borgogna 2014", "Grecanico 2016", "Tavel rosé 2016"], risposta: "Tavel rosé 2016", categoria: "Abbinamenti"},
-{domanda: "Quale vino abbineresti al piatto risotto ai funghi porcini con code di scampi?", is_multiple: true, opzioni: ["Sauvignon bianco 2015", "Manzoni bianco 2015", "Bardolino chiaretto 2017", "Frascati Cannellino 2013", "Cabernet sauvignon del Collio 2014", "Chianti classico 2012", "Lagrein Kretzer 2016"], risposta: "Lagrein Kretzer 2016", categoria: "Abbinamenti"},
+{domanda: "Quale vino abbineresti ad una zuppa di pesce alla marsigliese (Bouillabaisse)?", is_multiple: true, opzioni: ["Rosso di Montalcino 2023", "Sauternes 2023", "Pinot bianco borgogna 2024", "Grecanico 2024", "Tavel rosé 2024"], risposta: "Tavel rosé 2024", categoria: "Abbinamenti"},
+{domanda: "Quale vino abbineresti al piatto risotto ai funghi porcini con code di scampi?", is_multiple: true, opzioni: ["Sauvignon bianco 2024", "Manzoni bianco 2024", "Bardolino chiaretto 2024", "Frascati Cannellino 2024", "Cabernet sauvignon del Collio 2023", "Chianti classico 2024", "Lagrein Kretzer 2025"], risposta: "Lagrein Kretzer 2025", categoria: "Abbinamenti"},
+{domanda: "Quale vino abbineresti al piatto frittata di asparagi?", is_multiple: true, opzioni: ["Sauvignon blanc 2024", "Pelaverga 2024", "Asprinio di Aversa 2024", "Cannonau di Sardegna 2022", "Gewürztraminer 2024"], risposta: "Sauvignon blanc 2024", categoria: "Abbinamenti"},
+{domanda: "Quale vino abbineresti al piatto spaghetti alle vongole veraci? (senza pomodoro)", is_multiple: true, opzioni: ["Cabernet franc 2024", "Lugana 2024", "Prosecco spumante extra dry 2025", "Traminer aromatico 2024", "Merlot veneto 2024"], risposta: "Lugana 2024", categoria: "Abbinamenti"},
 {domanda: "Quale vino abbineresti al piatto frittata di asparagi?", is_multiple: true, opzioni: ["Sauvignon blanc 2016", "Pelaverga 2016", "Asprinio di Aversa 2017"], risposta: "Sauvignon blanc 2016", categoria: "Abbinamenti"},
-{domanda: "Quale vino abbineresti al piatto spaghetti alle vongole veraci? (senza pomodoro)", is_multiple: true, opzioni: ["Cabernet franc 2017", "Lugana 2015", "Prosecco spumante extra dry", "Traminer aromatico 2015", "Merlot veneto 2016"], risposta: "Lugana 2015", categoria: "Abbinamenti"},
 {domanda: "Quale vino abbineresti alle trenette al pesto?", is_multiple: false, risposta: "Pigato della Riviera Ligure di Ponente DOC", categoria: "Abbinamenti"},
 {domanda: "Accertata la disponibilità dei seguenti vini, disporli in una logica progressione: Trento extra brut, Rosso Conero Riserva, Vernaccia di Serrapetrona dolce, Verdicchio C.Jesi, Rosso Piceno.", is_multiple: false, risposta: "Trento Extra Brut, Verdicchio Castelli di Jesi, Rosso Piceno, Rosso Conero Riserva, Vernaccia di Serrapetrona Dolce", categoria: "Denominazioni"},
 {domanda: "In quale Nazione si produce il Muscat de Sétubal?", is_multiple: false, risposta: "Portogallo", categoria: "Enologia e Vinificazione"},
 {domanda: "In quale Paese si trovano le zone vitivinicole di Sonoma e Mendocino?", is_multiple: true, opzioni: ["Argentina", "Oregon", "Cile", "Australia", "California"], risposta: "California", categoria: "Normative e Classificazioni"},
-{domanda: "Qual è il vitigno principale del vino Banyuls?", is_multiple: false, risposta: "Grenache", categoria: "Tipologie di Vini"},
+{domanda: "Qual è il vitigno principale del vino Banyuls?", is_multiple: false, risposta: "Grenache", categoria: "Enologia e Vinificazione"},
 {domanda: "Vitigno a bacca rossa comune a tre Nazioni del Mediterraneo. Con quali nomi è conosciuto e dove?", is_multiple: false, risposta: "Grenache (Francia), Garnacha (Spagna), Cannonau (Sardegna)", categoria: "Viticoltura"},
 {domanda: "In quale regione della Francia si produce il Sancerre?", is_multiple: true, opzioni: ["Alsazia", "Cote du Rhone", "Borgogna", "Loira", "Jura"], risposta: "Loira", categoria: "Enologia e Vinificazione"},
 {domanda: "Da che cosa si ottiene il Rum industriale?", is_multiple: false, risposta: "Dalla melassa della canna da zucchero", categoria: "Enologia e Vinificazione"},
@@ -2778,12 +2837,12 @@
 {domanda: "Quale fra questi è un vitigno?", is_multiple: true, opzioni: ["Fiano di Avellino", "Taurasi", "Greco di Tufo", "Aglianico", "Gavi"], risposta: "Aglianico", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è il vitigno principale del Nobile di Montepulciano?", is_multiple: false, risposta: "Sangiovese", categoria: "Denominazioni"},
 {domanda: "Che cos'è la fillossera?", is_multiple: false, risposta: "Un insetto (afide) di origine americana che attacca le radici della Vitis vinifera, portandola alla morte", categoria: "Viticoltura"},
-{domanda: "Qual è il vitigno principale dello Sherry?", is_multiple: false, risposta: "Palomino (anche Pedro Ximénez e Moscatel)", categoria: "Tipologie di Vini"},
+{domanda: "Qual è il vitigno principale dello Sherry?", is_multiple: false, risposta: "Palomino (anche Pedro Ximénez e Moscatel)", categoria: "Enologia e Vinificazione"},
 {domanda: "In quale regione si produce il Gutturnio?", is_multiple: false, risposta: "Emilia-Romagna", categoria: "Enologia e Vinificazione"},
 {domanda: "In quale nazione si produce il Tokaji?", is_multiple: false, risposta: "Ungheria", categoria: "Denominazioni"},
 {domanda: "In quale regione della Francia si produce lo Chablis?", is_multiple: false, risposta: "Borgogna (zona più a Nord)", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa si intende per Vin de Paille?", is_multiple: false, risposta: "Un vino passito francese (letteralmente vino di paglia), tipico dello Jura", categoria: "Degustazione"},
-{domanda: "Cos'è la Cuvée de prestige?", is_multiple: false, risposta: "La migliore selezione di vino spumante di una casa produttrice", categoria: "Tipologie di Vini"},
+{domanda: "Cos'è la Cuvée de prestige?", is_multiple: false, risposta: "La migliore selezione di vino spumante di una casa produttrice", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è la temperatura ideale di servizio di un vino rosso di grande corpo?", is_multiple: false, risposta: "16-18°C", categoria: "Degustazione"},
 {domanda: "Quale vitigno si utilizza per produrre il Barbaresco?", is_multiple: false, risposta: "Nebbiolo", categoria: "Denominazioni"},
 {domanda: "Quale vino abbineresti ad un fegato alla veneziana?", is_multiple: false, risposta: "Amarone della Valpolicella, Valpolicella Classico Superiore Ripasso e Cabernet Colli Euganei", categoria: "Abbinamenti"},
@@ -2791,7 +2850,7 @@
 {domanda: "In quale regione si trova la zona del Collio?", is_multiple: false, risposta: "Friuli", categoria: "Denominazioni"},
 {domanda: "Qual è il vitigno principale del Morellino di Scansano?", is_multiple: false, risposta: "Sangiovese (Morellino)", categoria: "Enologia e Vinificazione"},
 {domanda: "Da cosa è causato l'odore di tappo?", is_multiple: false, risposta: "Un fungo che produce il composto chimico TCA (tricloroanisolo)", categoria: "Enologia e Vinificazione"},
-{domanda: "Cosa si intende per Vino Passito?", is_multiple: false, risposta: "Vino ottenuto da uve appassite prima della fermentazione", categoria: "Tipologie di Vini"},
+{domanda: "Cosa si intende per Vino Passito?", is_multiple: false, risposta: "Vino ottenuto da uve appassite prima della fermentazione", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali sono i vitigni della DOCG Amarone della Valpolicella?", is_multiple: false, risposta: "Corvina,Corvinone e Rondinella", categoria: "Denominazioni"},
 {domanda: "È vero che in Lombardia si produce un Lambrusco DOC?", is_multiple: false, risposta: "Sì, il Lambrusco Mantovano DOC", categoria: "Denominazioni"},
 {domanda: "Con quale vitigno viene prodotto il Gavi?", is_multiple: false, risposta: "Cortese", categoria: "Denominazioni"},
@@ -2799,22 +2858,22 @@
 {domanda: "Come viene chiamato il Nebbiolo coltivato in Valtellina?", is_multiple: false, risposta: "Chiavennasca", categoria: "Denominazioni"},
 {domanda: "Quale tra questi vitigni non è a bacca rossa?", is_multiple: true, opzioni: ["Lagrein", "Ancellotta", "Raboso", "Ortrugo", "Grignolino"], risposta: "Ortrugo", categoria: "Viticoltura"},
 {domanda: "In quale regione si produce il Cirò?", is_multiple: false, risposta: "Calabria", categoria: "Enologia e Vinificazione"},
-{domanda: "In quale nazione si produce il Porto?", is_multiple: false, risposta: "Portogallo", categoria: "Tipologie di Vini"},
-{domanda: "Che cosa si intende per cuvée?", is_multiple: false, risposta: "Miscela di vini di base diversi", categoria: "Tipologie di Vini"},
+{domanda: "In quale nazione si produce il Porto?", is_multiple: false, risposta: "Portogallo", categoria: "Enologia e Vinificazione"},
+{domanda: "Che cosa si intende per cuvée?", is_multiple: false, risposta: "Miscela di vini di base diversi", categoria: "Enologia e Vinificazione"},
 {domanda: "Indicare almeno tre vitigni autoctoni del Trentino Alto Adige", is_multiple: false, risposta: "Lagrein, Schiava, Teroldego Rotaliano, Marzemino, Nosiola, Traminer, Moscato rosa", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali sono le uve con cui si producono il Marsala bianco, e rosso?", is_multiple: false, risposta: "Marsala Bianco: Grillo e/o Catarratto e/o Ansonica; Marsala Rosso: Pignatello (Perricone) e/o Calabrese e/o Nerello mascalese", categoria: "Denominazioni"},
-{domanda: "Quali uve si utilizzano nella produzione dello Jerez?", is_multiple: false, risposta: "Palomino, Pedro ximenez, Moscatel, Zalema", categoria: "Tipologie di Vini"},
+{domanda: "Quali uve si utilizzano nella produzione dello Jerez?", is_multiple: false, risposta: "Palomino, Pedro ximenez, Moscatel, Zalema", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è il Coup de poignée?", is_multiple: false, risposta: "Lo scuotimento della bottiglia di Champagne o Spumante M.C. prima di essere posta sulle pupitres", categoria: "Enologia e Vinificazione"},
 {domanda: "cos'è la macerazione?", is_multiple: false, risposta: "La fase della Enologia e Vinificazione dove le bucce rimangono a contatto con la polpa", categoria: "Enologia e Vinificazione"},
 {domanda: "Come si riconosce una bottiglia contenente un vino DOCG?", is_multiple: false, risposta: "Dalla fascetta numerata di colore rosa per i vini rossi, di colore verdolino per i vini bianchi", categoria: "Normative e Classificazioni"},
 {domanda: "Che cosa misurano i gradi Oechsle?", is_multiple: false, risposta: "La quantità di zuccheri presenti in un mosto, per mezzo di un densimetro o aerometro", categoria: "Enologia e Vinificazione"},
-{domanda: "Elenca almeno 3 tipologie di Porto", is_multiple: false, risposta: "Full, Ruby, Tawny, Crusted, LBV, Colheita, Vintage", categoria: "Tipologie di Vini"},
+{domanda: "Elenca almeno 3 tipologie di Porto", is_multiple: false, risposta: "Full, Ruby, Tawny, Crusted, LBV, Colheita, Vintage", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa significa Enologia e Vinificazione sur lies?", is_multiple: false, risposta: "Il vino è lasciato maturare in botte sulle fecce senza filtraggio", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa si intende per Cru", is_multiple: false, risposta: "Zona nella quale l'insieme dei prodotti presenta caratteristiche originali. L'insieme di: luogo, suolo, clima, vitigno, tecniche, qualità", categoria: "Enologia e Vinificazione"},
 {domanda: "Perchè non si abbina mai un vino al gelato?", is_multiple: false, risposta: "Perchè il freddo inibisce la percezione delle papille gustative", categoria: "Abbinamenti"},
 {domanda: "Quali caratteristiche deve avere un vino da abbinare ad un cibo grasso ed untuoso?", is_multiple: false, risposta: "Acidità, effervescenza o tannicità", categoria: "Degustazione"},
 {domanda: "Qual'è la differenza fra cibo grasso e uno untuoso?", is_multiple: false, risposta: "Grasso = di origine animale come burro o grasso animale; Untuoso = proprio del condimento a base di olio", categoria: "Degustazione"},
-{domanda: "Qual'è il vino adatto ad un risotto al tartufo bianco?", is_multiple: false, risposta: "Un vino bianco, fruttato, con buona acidità e aromatico. Es. Langhe bianco o Chardonnay", categoria: "Tipologie di Vini"},
+{domanda: "Qual'è il vino adatto ad un risotto al tartufo bianco?", is_multiple: false, risposta: "Un vino bianco, fruttato, con buona acidità e aromatico. Es. Langhe bianco o Chardonnay", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è una Birra Lambic?", is_multiple: false, risposta: "Birra belga a fermentazione spontanea. Bassa alcolicità, sapore acidulo, colore opaco. Spesso addizionata di frutta", categoria: "Birra"},
 {domanda: "Da quale uva si ottiene il vino Cerasuolo d'Abruzzo?", is_multiple: false, risposta: "Montepulciano d'Abruzzo", categoria: "Denominazioni"},
 {domanda: "In quali vini l'effervescenza è un difetto e che cosa significa?", is_multiple: false, risposta: "Nei vini fermi. E' data dalla rifermentazione alcolica o malolattica in bottiglia; può essere anche una malattia (girato)", categoria: "Enologia e Vinificazione"},
@@ -2845,7 +2904,7 @@
 {domanda: "Qual'è il vino bianco piemontese da dessert DOCG ottenuto secondo il metodo Charmat?", is_multiple: false, risposta: "Asti Spumante", categoria: "Denominazioni"},
 {domanda: "Quali sono gli acidi fissi del vino?", is_multiple: false, risposta: "Acido tartarico, acido malico, acido citrico, acido lattico, acido succinico", categoria: "Enologia e Vinificazione"},
 {domanda: "Indicare le differenze tra i metodi di spumantizzazione charmat e classico", is_multiple: false, risposta: "La rifermentazione metodo charmat avviene in autoclave mentre con il metodo classico avviene in bottiglia", categoria: "Normative e Classificazioni"},
-{domanda: "Quando uno Champagne si definisce Blanc de noir?", is_multiple: false, risposta: "Quando è prodotto con uve nere vinificate in bianco", categoria: "Tipologie di Vini"},
+{domanda: "Quando uno Champagne si definisce Blanc de noir?", is_multiple: false, risposta: "Quando è prodotto con uve nere vinificate in bianco", categoria: "Enologia e Vinificazione"},
 {domanda: "Nella normativa italiana è previsto lo zuccheraggio per quali vini", is_multiple: false, risposta: "Solo ed esclusivamente per la preparazione di alcuni vini speciali e degli spumanti", categoria: "Normative e Classificazioni"},
 {domanda: "Di quale regione è autoctono il vitigno Schioppettino?", is_multiple: false, risposta: "Friuli - Venezia Giulia", categoria: "Denominazioni"},
 {domanda: "Quali uve compongono il Masseto?", is_multiple: false, risposta: "Merlot", categoria: "Enologia e Vinificazione"},
@@ -2855,10 +2914,9 @@
 {domanda: "Perchè ad un fritto non si abbina mai un vino tendente all'amaro?", is_multiple: false, risposta: "perchè il caldo del fritto facendo aumentare la temperatura in bocca acuirebbe molto le sensazioni amare", categoria: "Degustazione"},
 {domanda: "Quante e quali sono le DOCG della Sardegna?", is_multiple: false, risposta: "1 - Vermentino di Gallura", categoria: "Denominazioni"},
 {domanda: "Il Perricone è un vitigno:", is_multiple: true, opzioni: ["Campano", "Pugliese", "Lombardo", "Siciliano", "Emiliano"], risposta: "Siciliano", categoria: "Enologia e Vinificazione"},
-{domanda: "Quale vino abbineresti al piatto cotechino con puré di patate", is_multiple: true, opzioni: ["Cortese di Gavi 2011", "Lambrusco spumante 2011", "Chianti classico 2006", "Lagrein Kretzer 2011", "x"], risposta: "Lambrusco spumante 2011", categoria: "Abbinamenti"},
-{domanda: "Quale fra questi vini abbineresti ad uno spezzatino di cervo?", is_multiple: true, opzioni: ["Merlot Veneto12° 2011", "Pinot nero Oltrepò pavese 2010", "Barolo 13° 2004", "Sangiovese di Romagna 11,5° 2010", "Bonarda 12° 2011"], risposta: "Barolo 13° 2004", categoria: "Denominazioni"},
+{domanda: "Quale vino abbineresti al piatto cotechino con puré di patate", is_multiple: true, opzioni: ["Cortese di Gavi 2024", "Lambrusco spumante 2024", "Chianti classico 2025", "Lagrein Kretzer 2025", "x"], risposta: "Lambrusco spumante 2024", categoria: "Abbinamenti"},
+{domanda: "Quale fra questi vini abbineresti ad uno spezzatino di cervo?", is_multiple: true, opzioni: ["Merlot Veneto 2023", "Pinot nero Oltrepò pavese 2024", "Barolo 2022", "Sangiovese di Romagna 2024", "Bonarda 2024"], risposta: "Barolo 2022", categoria: "Abbinamenti"},
 {domanda: "Quale vino abbineresti ad una torta di mandorle?", is_multiple: false, risposta: "Passito di Pantelleria, Malvasia delle Lipari, Moscato passito di Trani, di Noto", categoria: "Abbinamenti"},
-{domanda: "Quale vino abbineresti al formaggio Roquefort?", is_multiple: true, opzioni: ["Pinot bianco borgogna 2010"], risposta: "Pinot bianco borgogna 2010", categoria: "Abbinamenti"},
 {domanda: "Con quali uve è prodotto il vino Chablis?", is_multiple: true, opzioni: ["Chardonnay", "Sauvignon blanc", "Mouscadelle", "Pinot bianco", "Chenin blanc"], risposta: "Chardonnay", categoria: "Enologia e Vinificazione"},
 {domanda: "Quale di questi vini piemontesi non è un vino bianco?", is_multiple: true, opzioni: ["Pelaverga", "Favorita", "Gavi di Gavi", "Loazzolo", "Erbaluce"], risposta: "Pelaverga", categoria: "Denominazioni"},
 {domanda: "In quali di questi vini è impiegato il vitigno Cabernet Sauvignon?", is_multiple: true, opzioni: ["Carmignano", "Barolo", "Taurasi", "Gattinara", "Valpolicella"], risposta: "Carmignano", categoria: "Enologia e Vinificazione"},
@@ -2871,7 +2929,7 @@
 {domanda: "Con quale uva si produce il Sancerre", is_multiple: true, opzioni: ["sauvignon blanc", "Chardonnay", "aligotè", "chenin blanc", "Pinot blanc"], risposta: "sauvignon blanc", categoria: "Viticoltura"},
 {domanda: "Quante e quali sono le doc comuni al Trentino e all'Alto Adige?", is_multiple: false, risposta: "Due: Valdadige e Caldaro", categoria: "Normative e Classificazioni"},
 {domanda: "Con quali uve si produce il Mandrolisai?", is_multiple: false, risposta: "Bovale, Cannonau, Monica", categoria: "Enologia e Vinificazione"},
-{domanda: "Qual'è il sistema migliore per raffreddare un vino bianco o uno Spumante?", is_multiple: false, risposta: "Immergere la bottiglia in un contenitore contenente acqua, ghiaccio e sale", categoria: "Tipologie di Vini"},
+{domanda: "Qual'è il sistema migliore per raffreddare un vino bianco o uno Spumante?", is_multiple: false, risposta: "Immergere la bottiglia in un contenitore contenente acqua, ghiaccio e sale", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali di questi piatti abbineresti ad un Trentino Nosiola?", is_multiple: true, opzioni: ["Risotto ai 4 formaggi", "Risotto con zucchine", "Risotto con le verze", "Risotto ai funghi porcini", "Risotto alla milanese"], risposta: "Risotto con le verze", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali sono le fasi di produzione della birra?", is_multiple: false, risposta: "Estrazione degli zuccheri dal malto (Maltatura), Ebollizione, Filtraggio, Fermentazione, Maturazione", categoria: "Birra"},
 {domanda: "Qual'è la temperatura di servizio delle grappe?", is_multiple: false, risposta: "14-17°C (14° per grappe giovani - 17° per grappe invecchiate)", categoria: "Servizio"},
@@ -2890,25 +2948,25 @@
 {domanda: "Quali sono le regioni vinicole più importanti degli Stati Uniti?", is_multiple: false, risposta: "California - Oregon", categoria: "Denominazioni"},
 {domanda: "Quale tra i seguenti vitigni americani appartiene alla specie vitis vinifera?", is_multiple: true, opzioni: ["Concord", "Vidal", "Catawba", "Zinfandel", "Baco noir"], risposta: "Zinfandel", categoria: "Enologia e Vinificazione"},
 {domanda: "Quando un mosto si dice mutizzato?", is_multiple: false, risposta: "Quando ne viene fermata la fermentazione con aggiunta di alcol", categoria: "Enologia e Vinificazione"},
-{domanda: "Parlando di spumanti, cos'è il taglio o cuvée?", is_multiple: false, risposta: "La cuvée è un termine francese relativo alla lavorazione degli spumanti che indica il risultato delle operazioni di taglio di vari vini di diverse annate o provenienze", categoria: "Tipologie di Vini"},
+{domanda: "Parlando di spumanti, cos'è il taglio o cuvée?", is_multiple: false, risposta: "La cuvée è un termine francese relativo alla lavorazione degli spumanti che indica il risultato delle operazioni di taglio di vari vini di diverse annate o provenienze", categoria: "Enologia e Vinificazione"},
 {domanda: "Descrivi le differenze delle zone sensibili della lingua", is_multiple: false, risposta: "Sulla lingua ci sono zone precise di sensibilità ai vari sapori fondamentali. Sulla punta si avverte il sapore dolce, sui lati vicino alla punta si avverte il salato, mentre sempre sui lati, ma più posteriormente si avverte l'acido, infine al centro della lingua, ma in posizione molto posteriore si avverte l'amaro", categoria: "Degustazione"},
 {domanda: "Quale vino abbinare ad un formaggio caprino fresco?", is_multiple: false, risposta: "Vino morbido con leggera vena aromatica. es. Tocai del Collio", categoria: "Degustazione"},
-{domanda: "Qual'è il vitigno bianco più diffuso in Svizzera?", is_multiple: false, risposta: "Chasselas (nome della Svizzera francese) o Gutedel (nome della Svizzera tedesca)", categoria: "Tipologie di Vini"},
+{domanda: "Qual'è il vitigno bianco più diffuso in Svizzera?", is_multiple: false, risposta: "Chasselas (nome della Svizzera francese) o Gutedel (nome della Svizzera tedesca)", categoria: "Enologia e Vinificazione"},
 {domanda: "In quale regione della Francia si produce lo Chateauneuf du Pape?", is_multiple: false, risposta: "Valle del Rodano", categoria: "Enologia e Vinificazione"},
 {domanda: "Quale vitigno di origine francese è considerato il più rappresentativo della produzione vitivinicola Australiana?", is_multiple: false, risposta: "Shiraz", categoria: "Denominazioni"},
 {domanda: "Quando un vino viene definito varietale?", is_multiple: false, risposta: "Quando in un vino si riconosce chiaramente il vitigno di provenienza", categoria: "Normative e Classificazioni"},
 {domanda: "Quando un vino ha avuto un invecchiamento dinamico?", is_multiple: false, risposta: "Quando, durante il suo invecchiamento, è passato attraverso altri contenitori (es. Soleras)", categoria: "Enologia e Vinificazione"},
 {domanda: "A che anno risale la prima classificazione dei vini della Gironda commissionata dalla camera di commercio di Bordeaux?", is_multiple: false, risposta: "1855", categoria: "Normative e Classificazioni"},
-{domanda: "Qual'è la differenza tra uno Sherry fino ed uno Sherry oloroso?", is_multiple: false, risposta: "Lo Sherry fino è un vino addizionato di alcol fino a 15° e poi invecchiato dinamicamente in botti in cui si sviluppa la Flor. Lo Sherry oloroso è un vino fortificato con alcol oltre i 17°, in cui non si sviluppa la flor", categoria: "Tipologie di Vini"},
+{domanda: "Qual'è la differenza tra uno Sherry fino ed uno Sherry oloroso?", is_multiple: false, risposta: "Lo Sherry fino è un vino addizionato di alcol fino a 15° e poi invecchiato dinamicamente in botti in cui si sviluppa la Flor. Lo Sherry oloroso è un vino fortificato con alcol oltre i 17°, in cui non si sviluppa la flor", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è l'acquavite di uva?", is_multiple: false, risposta: "Distillato di mosto, generalmente di vitigni aromatici, in alambicco discontinuo", categoria: "Viticoltura"},
 {domanda: "Quali sono le DOCG del Lazio?", is_multiple: false, risposta: "Cesanese del Piglio, Cannellino di Frascati, Frascati Superiore", categoria: "Denominazioni"},
 {domanda: "Lampia, Michet, Rosè sono sottovarietà di un vitigno. Quale?", is_multiple: false, risposta: "Nebbiolo", categoria: "Denominazioni"},
 {domanda: "Quale di queste DOC non appartiene alla Sardegna?", is_multiple: true, opzioni: ["Nasco", "Arborea", "Alezio", "Mandrolisai", "Carignano del Sulcis"], risposta: "Alezio", categoria: "Denominazioni"},
 {domanda: "Il nome Barbera è utilizzato in 2 DOC: Quali?", is_multiple: false, risposta: "Barbera d'Alba e Barbera del Monferrato. (Nota: Barbera d'Asti è passato DOCG in tutte le sue tipologie; Barbera del Monferrato Superiore è DOCG)", categoria: "Normative e Classificazioni"},
 {domanda: "Quale vitigno accomuna il Fara, il Carema, il Bramaterra e il Ghemme?", is_multiple: false, risposta: "Nebbiolo", categoria: "Denominazioni"},
-{domanda: "Qual è il vitigno principale nella produzione del Rosso Conero?", is_multiple: true, opzioni: ["Montepulciano d'Abruzzo", "Croatina", "Merlot", "Cabernet Sauvignon", "Sangiovese di Toscana"], risposta: "Montepulciano d'Abruzzo", categoria: "Tipologie di Vini"},
+{domanda: "Qual è il vitigno principale nella produzione del Rosso Conero?", is_multiple: true, opzioni: ["Montepulciano d'Abruzzo", "Croatina", "Merlot", "Cabernet Sauvignon", "Sangiovese di Toscana"], risposta: "Montepulciano d'Abruzzo", categoria: "Enologia e Vinificazione"},
 {domanda: "Olfattivamente come si distinguono un Prosecco da uno Spumante D.O.C.G. Franciacorta?", is_multiple: false, risposta: "Il Prosecco ha sentori primari e secondari, floreale, fruttati. Il Franciacorta ha sentori di lievito e crosta di pane", categoria: "Denominazioni"},
-{domanda: "Che cosa si intende per vino abboccato?", is_multiple: false, risposta: "Vino in cui sono presenti zuccheri non completamente svolti", categoria: "Tipologie di Vini"},
+{domanda: "Che cosa si intende per vino abboccato?", is_multiple: false, risposta: "Vino in cui sono presenti zuccheri non completamente svolti", categoria: "Enologia e Vinificazione"},
 {domanda: "In quali di questi vini non è impiegato il vitigno Sangiovese?", is_multiple: true, opzioni: ["Vino Nobile di Montepulciano", "Torgiano", "Sagrantino", "Brunello di Montalcino", "Morellino di Scansano"], risposta: "Sagrantino", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos'è il governo toscano?", is_multiple: false, risposta: "Aggiunta di mosto appassito per aumentare la gradazione alcolica", categoria: "Enologia e Vinificazione"},
 {domanda: "Quale di queste AOC comunali non appartiene alla regione del Médoc?", is_multiple: true, opzioni: ["Pauillac", "Margaux", "Barsac", "Saint-Estèphe", "Listrac"], risposta: "Barsac", categoria: "Normative e Classificazioni"},
@@ -2919,12 +2977,11 @@
 {domanda: "In quale bicchiere si beve una birra Pilzen?", is_multiple: false, risposta: "Nella flute o nel calice a chiudere", categoria: "Servizio"},
 {domanda: "A quale tipo di cibo si può abbinare un Gewurztraminer?", is_multiple: true, opzioni: ["Ad un cibo dolce", "Ad un cibo grasso", "Ad un cibo affumicato", "Ad un cibo delicato", "Ad un cibo unto"], risposta: "Ad un cibo grasso", categoria: "Abbinamenti"},
 {domanda: "Quale vino abbineresti ad un formaggio Roquefort?", is_multiple: false, risposta: "Sauternes, Muffato della Sala, Picolit", categoria: "Abbinamenti"},
-{domanda: "Quale vino abbineresti al piatto cotechino con purè di patate?", is_multiple: true, opzioni: ["Chianti classico 2006", "Lambrusco spumante 2011", "Cortese di Gavi 2011", "Lagrein Kretzer 2011"], risposta: "Lambrusco spumante 2011", categoria: "Abbinamenti"},
 {domanda: "In quale regione si trova la DOC Carema?", is_multiple: true, opzioni: ["Piemonte", "Toscana", "Liguria", "Calabria", "Lombardia"], risposta: "Piemonte", categoria: "Normative e Classificazioni"},
 {domanda: "Quante e quali DOC della Sardegna si estendono su tutto il territorio dell'isola?", is_multiple: false, risposta: "Cinque: Cannonau di Sardegna, Monica di Sardegna, Moscato di Sardegna, Sardegna Semidano, Vermentino di Sardegna", categoria: "Denominazioni"},
 {domanda: "Quale di questi vini DOC è prodotto in Lombardia?", is_multiple: true, opzioni: ["Valcalepio", "Gutturnio", "Gambellara", "Pagadebit", "Carema"], risposta: "Valcalepio", categoria: "Denominazioni"},
 {domanda: "Quale di questi vini toscani non è una DOCG?", is_multiple: true, opzioni: ["Vernaccia di San Gimignano", "Vino Nobile di Montepulciano", "Rosso di Montalcino", "Carmignano", "Chianti Classico"], risposta: "Rosso di Montalcino", categoria: "Normative e Classificazioni"},
-{domanda: "In quale regione italiana si coltiva il vitigno Piedirosso?", is_multiple: true, opzioni: ["Marche", "Campania", "Sardegna", "Sicilia", "Veneto"], risposta: "Campania", categoria: "Tipologie di Vini"},
+{domanda: "In quale regione italiana si coltiva il vitigno Piedirosso?", is_multiple: true, opzioni: ["Marche", "Campania", "Sardegna", "Sicilia", "Veneto"], risposta: "Campania", categoria: "Enologia e Vinificazione"},
 {domanda: "Indica almeno 5 vitigni coltivati in California", is_multiple: false, risposta: "Zinfandel, Cabernet Franc, Cabernet Sauvignon, Pinot nero, Barbera, Chardonnay, Sauvignon blanc, Semillon, Riesling", categoria: "Denominazioni"},
 {domanda: "Quale vitigno è usato in percentuale maggiore per produrre il vino doc Savuto rosso?", is_multiple: false, risposta: "Gaglioppo", categoria: "Denominazioni"},
 {domanda: "A cosa serve la schiuma sulla birra?", is_multiple: false, risposta: "È indice di purezza e qualità e serve soprattutto a proteggere la birra dall’aria evitando una rapida ossidazione.", categoria: "Servizio"},
@@ -2989,7 +3046,7 @@
 {domanda: "Qual è la definizione legale di vino secondo la normativa UE?", is_multiple: false, risposta: "Prodotto ottenuto esclusivamente dalla fermentazione alcolica totale o parziale di uve fresche, pigiate o no, o di mosto d’uve, da Vitis vinifera (o incroci ammessi per vini non a denominazione).", categoria: "Normative e Classificazioni"},
 {domanda: "Quando può essere utilizzata la menzione Classico in etichetta?", is_multiple: false, risposta: "Per vini DO della zona di origine più antica; per gli spumanti si usa il termine Storico. Fa eccezione la DOCG Chianti Classico, autonoma.", categoria: "Normative e Classificazioni"},
 {domanda: "Quando può essere utilizzata la menzione Gran Selezione in etichetta?", is_multiple: false, risposta: "Per vini DOCG ottenuti da uve di vigneti condotti dall’imbottigliatore, con requisiti analoghi al Superiore e invecchiamento almeno pari alla Riserva.", categoria: "Normative e Classificazioni"},
-{domanda: "Quando può essere utilizzata la menzione Passito o Vino Passito in etichetta?", is_multiple: false, risposta: "Per vini DO e IGT ottenuti da uve appassite o stramature, naturalmente o in ambiente condizionato; la menzione vino passito liquoroso è prevista per alcuni IGT.", categoria: "Tipologie di Vini"},
+{domanda: "Quando può essere utilizzata la menzione Passito o Vino Passito in etichetta?", is_multiple: false, risposta: "Per vini DO e IGT ottenuti da uve appassite o stramature, naturalmente o in ambiente condizionato; la menzione vino passito liquoroso è prevista per alcuni IGT.", categoria: "Enologia e Vinificazione"},
 {domanda: "Quando può essere utilizzata la menzione Riserva in etichetta?", is_multiple: false, risposta: "Per vini DO con invecchiamento minimo: almeno 1 anno per bianchi e Charmat, 2 anni per rossi, 3 anni per spumanti metodo classico.", categoria: "Normative e Classificazioni"},
 {domanda: "Quando può essere utilizzata la menzione Superiore in etichetta?", is_multiple: false, risposta: "Per vini DO con caratteristiche qualitative superiori, resa per ettaro inferiore e titolo alcolometrico maggiore; in alcuni casi identifica una zona più alta (es. Valtellina Superiore).", categoria: "Normative e Classificazioni"},
 {domanda: "Quando può essere utilizzata la menzione Vigna in etichetta?", is_multiple: false, risposta: "Per vini DO ottenuti da uve provenienti da una singola vigna registrata in elenco ufficiale regionale, indicata con il relativo toponimo.", categoria: "Viticoltura"},
@@ -3001,7 +3058,7 @@
 {domanda: "In cosa consiste l’HACCP nel settore alimentare?", is_multiple: false, risposta: "In un sistema di autocontrollo igienico che individua i pericoli nel processo produttivo e prevede misure preventive e di controllo obbligatorie per le aziende della ristorazione.", categoria: "Enologia e Vinificazione"},
 {domanda: "Nel servizio in sala, chi è il runner?", is_multiple: false, risposta: "È l’addetto che porta cibi e bevande da cucina e bar in sala e riporta in lavaggio il materiale di sbarazzo, lavorando a supporto degli chef de rang.", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è l’ordine di servizio a tavola secondo il galateo classico?", is_multiple: false, risposta: "Per primo il rappresentante del clero, poi l’autorità costituita e a seguire la signora più anziana.", categoria: "Servizio"},
-{domanda: "Qual è il sistema migliore per raffreddare un vino bianco o uno spumante?", is_multiple: false, risposta: "Immergere la bottiglia in un secchiello contenente acqua, ghiaccio e sale.", categoria: "Tipologie di Vini"},
+{domanda: "Qual è il sistema migliore per raffreddare un vino bianco o uno spumante?", is_multiple: false, risposta: "Immergere la bottiglia in un secchiello contenente acqua, ghiaccio e sale.", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali sono i principali strumenti del sommelier?", is_multiple: false, risposta: "Cavatappi, termometro, frangino, tastevin, pinza per spumanti, decanter, secchiello.", categoria: "Servizio"},
 {domanda: "Quali tipologie di bottiglie sono più indicate per i vini rossi?", is_multiple: false, risposta: "Bordolese, borgognona e Albeisa.", categoria: "Servizio"},
 {domanda: "Quali sono le informazioni indispensabili sulla carta dei vini?", is_multiple: false, risposta: "Produttore, nome del vino, denominazione, annata, grado alcolico e prezzo; consigliati anche vitigni, affinamento e note produttive.", categoria: "Servizio"},
@@ -3013,7 +3070,7 @@
 {domanda: "Da cosa può essere dovuto il sentore di tappo in un vino?", is_multiple: false, risposta: "Dalla presenza di TCA prodotto dalle spore di Armillaria mellea nel sughero, che conferisce l’odore di tappo.", categoria: "Degustazione"},
 {domanda: "Che cosa è il Talento?", is_multiple: false, risposta: "Marchio che identifica lo spumante Metodo Classico italiano da Chardonnay, Pinot Nero e Pinot Bianco con almeno 15 mesi sui lieviti e zuccheri < 12 g/l.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è il vino Madeira?", is_multiple: false, risposta: "Un vino liquoroso portoghese prodotto nell’isola di Madeira, fortificato e sottoposto a particolari pratiche di invecchiamento.", categoria: "Denominazioni"},
-{domanda: "Che cos’è un vino liquoroso?", is_multiple: false, risposta: "Vino da tavola (almeno 12% vol) a cui si aggiungono alcol, mistella, acquavite o mosto concentrato per portare la gradazione tra 16 e 22% vol, bloccando in parte la fermentazione.", categoria: "Tipologie di Vini"},
+{domanda: "Che cos’è un vino liquoroso?", is_multiple: false, risposta: "Vino da tavola (almeno 12% vol) a cui si aggiungono alcol, mistella, acquavite o mosto concentrato per portare la gradazione tra 16 e 22% vol, bloccando in parte la fermentazione.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa sono i vini passiti? Elencane alcuni con i relativi processi di produzione.", is_multiple: false, risposta: "Vini ottenuti dalla fermentazione di uve appassite naturalmente o in fruttaio; esempi: Erbaluce passito, Gewürztraminer passito, Moscato passito, Recioto di Soave, Montefalco Sagrantino passito, Malvasia delle Lipari, Moscato di Pantelleria, Sciacchetrà (da vendemmia anticipata).", categoria: "Enologia e Vinificazione"},
 {domanda: "Definisci i vini liquorosi e proponi alcuni esempi.", is_multiple: false, risposta: "Vini prodotti da un vino base cui si aggiungono alcol, mosto concentrato, acquavite o mistella per aumentare il titolo alcolometrico fino a 16–22% vol; esempi: Marsala, Porto, Madeira, Sherry.", categoria: "Enologia e Vinificazione"},
 {domanda: "Indica tre vini liquorosi.", is_multiple: false, risposta: "Marsala, Porto, Madeira, Sherry/Jerez (ne bastano tre).", categoria: "Enologia e Vinificazione"},
@@ -3021,24 +3078,24 @@
 {domanda: "Come si classifica il Marsala in base all’invecchiamento?", is_multiple: false, risposta: "Fine (1 anno, 17% vol), Superiore (2 anni, >18% vol), Superiore Riserva (4 anni, >18% vol), Vergine o Soleras (5 anni, >18% vol), Vergine Soleras Stravecchio/Riserva (almeno 10 anni in legno).", categoria: "Denominazioni"},
 {domanda: "Perché una qualità di Barolo si definisce Chinato?", is_multiple: false, risposta: "Perché è un vino aromatizzato a base Barolo DOCG, con corteccia di china calissaia, radici di rabarbaro e genziana e spezie come cardamomo.", categoria: "Denominazioni"},
 {domanda: "Quale agente esterno contribuisce alla maturazione dello Sherry Fino?", is_multiple: false, risposta: "La flor, un velo di lieviti che si sviluppa in botte a circa 15% vol e 18–22 °C, conferendo complessità e carattere.", categoria: "Viticoltura"},
-{domanda: "Qual è la caratteristica principale di un Vintage Port?", is_multiple: false, risposta: "È prodotto con vino di un’unica annata dichiarata, nelle migliori vendemmie.", categoria: "Tipologie di Vini"},
-{domanda: "Quali sono i vini speciali?", is_multiple: false, risposta: "In genere si intendono mistelle, spumanti, vini liquorosi e vini aromatizzati.", categoria: "Tipologie di Vini"},
+{domanda: "Qual è la caratteristica principale di un Vintage Port?", is_multiple: false, risposta: "È prodotto con vino di un’unica annata dichiarata, nelle migliori vendemmie.", categoria: "Enologia e Vinificazione"},
+{domanda: "Quali sono i vini speciali?", is_multiple: false, risposta: "In genere si intendono mistelle, spumanti, vini liquorosi e vini aromatizzati.", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali sono le uve con cui si produce il Marsala Bianco e il Marsala Rosso?", is_multiple: false, risposta: "Bianco: Grillo, Catarratto, Ansonica (Inzolia), Damaschino; Rosso: Pignatello (Perricone), Calabrese (Nero d’Avola), Nerello Mascalese.", categoria: "Denominazioni"},
 {domanda: "Se sull’etichetta di un vino tedesco leggi Eiswein, cosa vuol dire?", is_multiple: false, risposta: "Che è un vino di ghiaccio ottenuto da uve raccolte congelate dopo le prime gelate, pressate rapidamente per ottenere un mosto molto concentrato, dolce e acido.", categoria: "Normative e Classificazioni"},
 {domanda: "Come può essere classificato un vino Marsala?", is_multiple: false, risposta: "Per invecchiamento (Fine, Superiore, Superiore Riserva, Vergine/Soleras, Vergine Stravecchio), per colore (Oro, Ambra, Rubino) e per residuo zuccherino (Secco, Semisecco, Dolce).", categoria: "Denominazioni"},
 {domanda: "Quali cinque vitigni sono adatti alla spumantizzazione metodo classico?", is_multiple: false, risposta: "Chardonnay, Pinot Nero, Pinot Bianco, Pinot Grigio e Riesling; in Champagne anche Pinot Meunier.", categoria: "Enologia e Vinificazione"},
-{domanda: "Che cosa esprime la qualità di uno spumante quando lo si guarda?", is_multiple: false, risposta: "La finezza, continuità e numerosità del perlage (bollicine).", categoria: "Tipologie di Vini"},
-{domanda: "Come si classificano gli spumanti in base al grado zuccherino?", is_multiple: false, risposta: "Pas Dosé/Brut Nature/Dosaggio Zero (<3 g/l, senza zucchero aggiunto), Extra Brut (0–6 g/l), Brut (<12 g/l), Extra Dry/Extra Sec (12–17 g/l), Dry/Sec (17–32 g/l), Demi-Sec/Abboccato (32–50 g/l), Dolce (>50 g/l).", categoria: "Tipologie di Vini"},
+{domanda: "Che cosa esprime la qualità di uno spumante quando lo si guarda?", is_multiple: false, risposta: "La finezza, continuità e numerosità del perlage (bollicine).", categoria: "Enologia e Vinificazione"},
+{domanda: "Come si classificano gli spumanti in base al grado zuccherino?", is_multiple: false, risposta: "Pas Dosé/Brut Nature/Dosaggio Zero (<3 g/l, senza zucchero aggiunto), Extra Brut (0–6 g/l), Brut (<12 g/l), Extra Dry/Extra Sec (12–17 g/l), Dry/Sec (17–32 g/l), Demi-Sec/Abboccato (32–50 g/l), Dolce (>50 g/l).", categoria: "Enologia e Vinificazione"},
 {domanda: "Come si definisce uno Champagne non addizionato di liqueur d’expédition?", is_multiple: false, risposta: "Pas Dosé, Brut Nature o Dosaggio Zero, dove la bottiglia è rabboccata solo con vino e non con sciroppo di dosaggio.", categoria: "Enologia e Vinificazione"},
-{domanda: "Che cos’è la Cuvée nella preparazione degli spumanti?", is_multiple: false, risposta: "È il risultato dell’assemblaggio (taglio) di diversi vini base prima della presa di spuma, che definisce lo stile della maison.", categoria: "Tipologie di Vini"},
+{domanda: "Che cos’è la Cuvée nella preparazione degli spumanti?", is_multiple: false, risposta: "È il risultato dell’assemblaggio (taglio) di diversi vini base prima della presa di spuma, che definisce lo stile della maison.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è il Liqueur de Tirage di uno Champagne?", is_multiple: false, risposta: "Miscela di vino, zucchero di canna, lieviti e sali minerali aggiunta per avviare la seconda fermentazione in bottiglia.", categoria: "Enologia e Vinificazione"},
-{domanda: "Che cos’è uno spumante naturale secondo la legge?", is_multiple: false, risposta: "Vino ottenuto da prima o seconda fermentazione di uve fresche, mosto o vino, in recipiente chiuso, con CO₂ esclusivamente di fermentazione, pressione ≥ 3 atm a 20 °C e almeno 9,5% vol alcolici.", categoria: "Tipologie di Vini"},
+{domanda: "Che cos’è uno spumante naturale secondo la legge?", is_multiple: false, risposta: "Vino ottenuto da prima o seconda fermentazione di uve fresche, mosto o vino, in recipiente chiuso, con CO₂ esclusivamente di fermentazione, pressione ≥ 3 atm a 20 °C e almeno 9,5% vol alcolici.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è il Liqueur d’Expédition?", is_multiple: false, risposta: "Miscela di zucchero e/o distillati (es. cognac) aggiunta dopo la sboccatura per colmare la bottiglia e definire il dosaggio finale.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cosa sono Remuage e Dégorgement?", is_multiple: false, risposta: "Remuage: progressiva rotazione e inclinazione delle bottiglie sui pupitres per convogliare il deposito sul tappo; Dégorgement: rimozione del tappo a corona e del deposito congelato, espulso dalla pressione interna.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è il tappo a fungo?", is_multiple: false, risposta: "Il tappo utilizzato per gli spumanti, cilindrico prima dell’imbottigliamento e a forma di fungo dopo la sosta in bottiglia; il recupero della forma indica il tempo trascorso.", categoria: "Viticoltura"},
 {domanda: "Che cos’è la presa di spuma?", is_multiple: false, risposta: "La fase in cui il vino rifermenta in recipiente chiuso sviluppando anidride carbonica che forma il perlage.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è un Cava?", is_multiple: false, risposta: "Vino spumante spagnolo prodotto con metodo classico, soprattutto da Macabeo, Parellada e Xarel-lo, oltre a Chardonnay e Pinot Nero per alcuni stili.", categoria: "Enologia e Vinificazione"},
-{domanda: "Cosa vuol dire Blanc de Noir?", is_multiple: false, risposta: "Spumante ottenuto esclusivamente da vitigni a bacca nera (es. Pinot Nero, Pinot Meunier).", categoria: "Tipologie di Vini"},
+{domanda: "Cosa vuol dire Blanc de Noir?", is_multiple: false, risposta: "Spumante ottenuto esclusivamente da vitigni a bacca nera (es. Pinot Nero, Pinot Meunier).", categoria: "Enologia e Vinificazione"},
 {domanda: "Qual è la differenza sostanziale tra Metodo Classico e Metodo Charmat?", is_multiple: false, risposta: "Nel Metodo Classico la rifermentazione avviene in bottiglia; nel Metodo Charmat (o Martinotti) avviene in autoclave.", categoria: "Enologia e Vinificazione"},
 {domanda: "Cosa si intende per presa di spuma e maturazione sur lie?", is_multiple: false, risposta: "Presa di spuma è la seconda fermentazione; maturazione sur lie è la sosta prolungata del vino sui lieviti in bottiglia o autoclave, che ne aumenta complessità e finezza.", categoria: "Viticoltura"},
 {domanda: "Che cos’è il metodo ancestrale negli spumanti?", is_multiple: false, risposta: "Metodo simile al classico ma senza sboccatura e dosaggio; il vino rimane con i lieviti in bottiglia e spesso risulta leggermente torbido.", categoria: "Enologia e Vinificazione"},
@@ -3046,13 +3103,13 @@
 {domanda: "Perché nel Metodo Charmat si usano vitigni aromatici?", is_multiple: false, risposta: "Perché l’affinamento breve in autoclave preserva gli aromi primari di vitigni come Moscato e Glera, che verrebbero attenuati da soste troppo lunghe sui lieviti.", categoria: "Enologia e Vinificazione"},
 {domanda: "Può essere indicato l’anno di vendemmia sull’etichetta di un vino spumante?", is_multiple: false, risposta: "Sì, se almeno l’85% delle uve proviene da quella annata; in tal caso è detto Millesimato.", categoria: "Viticoltura"},
 {domanda: "Qual è il contenuto massimo di CO₂ ammesso nei vini frizzanti?", is_multiple: false, risposta: "Massimo 5 g/l, corrispondenti a una sovrapressione di circa 2,5 atmosfere.", categoria: "Normative e Classificazioni"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Brut?", is_multiple: false, risposta: "Inferiore a 12 g/l.", categoria: "Tipologie di Vini"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Demi-Sec (semi secco)?", is_multiple: false, risposta: "Tra 32 e 50 g/l.", categoria: "Tipologie di Vini"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Dolce?", is_multiple: false, risposta: "Superiore a 50 g/l.", categoria: "Tipologie di Vini"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Dry (secco)?", is_multiple: false, risposta: "Tra 17 e 32 g/l.", categoria: "Tipologie di Vini"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Extra Brut?", is_multiple: false, risposta: "Tra 0 e 6 g/l.", categoria: "Tipologie di Vini"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Extra Dry (extra secco)?", is_multiple: false, risposta: "Tra 12 e 17 g/l.", categoria: "Tipologie di Vini"},
-{domanda: "Qual è il residuo zuccherino per uno spumante Pas Dosé (dosaggio zero o Brut Nature)?", is_multiple: false, risposta: "Inferiore a 3 g/l, senza aggiunta di zucchero dopo la seconda fermentazione.", categoria: "Tipologie di Vini"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Brut?", is_multiple: false, risposta: "Inferiore a 12 g/l.", categoria: "Enologia e Vinificazione"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Demi-Sec (semi secco)?", is_multiple: false, risposta: "Tra 32 e 50 g/l.", categoria: "Enologia e Vinificazione"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Dolce?", is_multiple: false, risposta: "Superiore a 50 g/l.", categoria: "Enologia e Vinificazione"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Dry (secco)?", is_multiple: false, risposta: "Tra 17 e 32 g/l.", categoria: "Enologia e Vinificazione"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Extra Brut?", is_multiple: false, risposta: "Tra 0 e 6 g/l.", categoria: "Enologia e Vinificazione"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Extra Dry (extra secco)?", is_multiple: false, risposta: "Tra 12 e 17 g/l.", categoria: "Enologia e Vinificazione"},
+{domanda: "Qual è il residuo zuccherino per uno spumante Pas Dosé (dosaggio zero o Brut Nature)?", is_multiple: false, risposta: "Inferiore a 3 g/l, senza aggiunta di zucchero dopo la seconda fermentazione.", categoria: "Enologia e Vinificazione"},
 {domanda: "Secondo il regolamento CEE 607/2009, quali sono le diciture per classificare gli spumanti in base al tenore zuccherino?", is_multiple: false, risposta: "Pas Dosé, Extra Brut, Brut, Extra Dry, Dry, Demi-Sec, Dolce.", categoria: "Enologia e Vinificazione"},
 {domanda: "Quali vitigni si usano per ottenere spumanti aromatici?", is_multiple: false, risposta: "Moscato, Brachetto, Malvasia, Gewürztraminer e altri vitigni aromatici.", categoria: "Denominazioni"},
 {domanda: "A cosa servono i mosti concentrati?", is_multiple: false, risposta: "Ad aumentare il tenore zuccherino del mosto e quindi il tasso alcolico potenziale del vino.", categoria: "Enologia e Vinificazione"},
@@ -3066,7 +3123,7 @@
 {domanda: "Cosa determinano i terpeni nel vino?", is_multiple: false, risposta: "Conferiscono odori gradevoli, soprattutto aromatici e fruttati; sono alla base degli aromi primari varietali, presenti soprattutto nella buccia dell’acino.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è e a cosa serve l’acido tartarico nel vino?", is_multiple: false, risposta: "È l’acido organico principale della vite, resistente ai batteri; contribuisce alla stabilità, freschezza e capacità di conservazione del vino.", categoria: "Servizio"},
 {domanda: "Che cos’è il giropalette?", is_multiple: false, risposta: "Macchinario che automatizza il remuage, ruotando e inclinando le bottiglie per convogliare il deposito di lieviti sul collo.", categoria: "Enologia e Vinificazione"},
-{domanda: "Che cos’è il vin de cuvée o taglio nei vini spumanti?", is_multiple: false, risposta: "È l’assemblaggio di vini base di provenienze e annate diverse per ottenere una cuvée equilibrata e costante nello stile della maison.", categoria: "Tipologie di Vini"},
+{domanda: "Che cos’è il vin de cuvée o taglio nei vini spumanti?", is_multiple: false, risposta: "È l’assemblaggio di vini base di provenienze e annate diverse per ottenere una cuvée equilibrata e costante nello stile della maison.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è il bâtonnage?", is_multiple: false, risposta: "La rimessa in sospensione delle fecce fini (fondi) del vino mediante un’asta, soprattutto in barrique, per aumentarne struttura e complessità.", categoria: "Enologia e Vinificazione"},
 {domanda: "Che cos’è il carattere varietale?", is_multiple: false, risposta: "L’insieme di gusto, aroma, struttura e caratteristiche tipiche di un determinato vitigno riconoscibili nel vino.", categoria: "Normative e Classificazioni"},
 {domanda: "Che cos’è il sistema Soleras?", is_multiple: false, risposta: "Sistema di invecchiamento dinamico in cui vini di annate diverse maturano in botti disposte a file sovrapposte; il vino prelevato dalle botti più basse viene rimpiazzato con vini più giovani dalle file superiori.", categoria: "Enologia e Vinificazione"},
@@ -3414,14 +3471,15 @@
 
             if (q.is_multiple) {
                 q.opzioni.forEach((opt, idx) => {
-                    html += `<label style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer;">`;
-                    html += `<input type="radio" name="quiz-answer" value="${opt}">`;
-                    html += `<span>${opt}</span>`;
-                    html += `</label>`;
+                    html += `<label style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; cursor: pointer; line-height: 1.5;">`;
+                    html += `<input type="radio" name="quiz-answer" value="${opt}" style="flex-shrink: 0; margin-top: 2px; min-width: 20px; min-height: 20px;">`;
+                    html += `<span style="flex: 1;">${opt}</span>`;
+                   html += `</label>`;
                 });
             } else {
                 html += `<textarea id="quiz-text-answer" placeholder="Scrivi la tua risposta..." style="width: 100%; min-height: 80px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit;"></textarea>`;
             }
+
 
             html += `<div id="quiz-answer-display" style="display: none; margin-top: 12px; padding: 12px; background: #e8f5e9; border-left: 4px solid #2E7D32; border-radius: 6px;">`;
             html += `<strong style="color: #2E7D32;">📖 Risposta corretta:</strong>`;
@@ -3444,37 +3502,70 @@
         }
 
         function submitQuizAnswer() {
-            const q = filteredQuestions[currentQuizIndex];
-            let userAnswer = '';
+    const q = filteredQuestions[currentQuizIndex];
+    let userAnswer = '';
 
-            if (q.is_multiple) {
-                const selected = document.querySelector('input[name="quiz-answer"]:checked');
-                if (!selected) {
-                    alert('Seleziona una risposta!');
-                    return;
-                }
-                userAnswer = selected.value;
-            } else {
-                userAnswer = document.getElementById('quiz-text-answer').value.trim();
-                if (!userAnswer) {
-                    alert('Scrivi una risposta!');
-                    return;
-                }
-            }
-
-            const correct = userAnswer.toLowerCase().includes(q.risposta.toLowerCase()) || 
-                           q.risposta.toLowerCase().includes(userAnswer.toLowerCase());
-
-            if (correct) {
-                quizStats.correct++;
-                alert('✅ Risposta CORRETTA!\n\nRisposta esatta: ' + q.risposta);
-            } else {
-                quizStats.incorrect++;
-                alert('❌ Risposta ERRATA\n\nRisposta corretta: ' + q.risposta);
-            }
-
-            updateQuizStats();
+    if (q.is_multiple) {
+        const selected = document.querySelector('input[name="quiz-answer"]:checked');
+        if (!selected) {
+            alert('Seleziona una risposta!');
+            return;
         }
+        userAnswer = selected.value;
+    } else {
+        userAnswer = document.getElementById('quiz-text-answer').value.trim();
+        if (!userAnswer) {
+            alert('Scrivi una risposta!');
+            return;
+        }
+    }
+
+    // Normalizza le stringhe per il confronto
+    const normalizedUserAnswer = userAnswer.toLowerCase().trim();
+    const normalizedCorrectAnswer = q.risposta.toLowerCase().trim();
+
+    let correct = false;
+
+    // Per risposte a scelta multipla, confronto esatto
+    if (q.is_multiple) {
+        correct = normalizedUserAnswer === normalizedCorrectAnswer;
+    } else {
+        // Per risposte testuali, applica la logica del 30% o 3 parole
+        
+        // Dividi in parole (rimuovi punteggiatura)
+        const userWords = normalizedUserAnswer.split(/\s+/).filter(w => w.length > 0);
+        const correctWords = normalizedCorrectAnswer.split(/\s+/).filter(w => w.length > 0);
+
+        // Conta quante parole corrispondono
+        let matchingWords = 0;
+        for (const userWord of userWords) {
+            for (const correctWord of correctWords) {
+                if (userWord === correctWord || 
+                    userWord.includes(correctWord) || 
+                    correctWord.includes(userWord)) {
+                    matchingWords++;
+                    break;
+                }
+            }
+        }
+
+        // Calcola la percentuale di corrispondenza
+        const matchPercentage = (matchingWords / correctWords.length) * 100;
+
+        // Verifica se soddisfa i criteri: almeno 30% O almeno 3 parole
+        correct = matchingWords >= 3 || matchPercentage >= 30;
+    }
+
+    if (correct) {
+        quizStats.correct++;
+        alert('✅ Risposta CORRETTA!\n\nRisposta esatta: ' + q.risposta);
+    } else {
+        quizStats.incorrect++;
+        alert('❌ Risposta ERRATA\n\nRisposta corretta: ' + q.risposta);
+    }
+
+    updateQuizStats();
+}
 
         function toggleQuizAnswer() {
             const display = document.getElementById('quiz-answer-display');
@@ -3640,8 +3731,8 @@
                 items: {
                     'insalata-crostacei': { name: 'Insalata di crostacei', vino: 'Franciacorta DOCG Satèn', annata: '2020', temperatura: '8°C', motivazione: 'Le bollicine cremose e l\'acidità fresca della Franciacorta Satèn puliscono il palato dalla dolcezza naturale dei crostacei, creando un perfetto equilibrio per concordanza aromatica e contrasto di struttura.' },
                     'carpaccio-pesce': { name: 'Carpaccio di pesce', vino: 'Vermentino di Sardegna DOC', annata: '2024', temperatura: '10°C', motivazione: 'La sapidità minerale e l\'acidità vivace del Vermentino esaltano per concordanza la delicatezza del pesce crudo, mentre la freschezza pulisce il palato senza coprire i sapori delicati.' },
-                    'ostriche': { name: 'Ostriche', vino: 'Franciacorta DOCG Brut', annata: '2021', temperatura: '8°C', motivazione: 'L\'effervescenza e l\'elevata acidità del metodo classico puliscono perfettamente il palato dalla consistenza cremosa delle ostriche, mentre la sapidità si abbina per concordanza territoriale e strutturale.' },
-                    'tartare-tonno': { name: 'Tartare di tonno', vino: 'Fiano di Avellino DOCG', annata: '2023', temperatura: '10°C', motivazione: 'La struttura del Fiano e la sua mineralità vulcanica reggono la grassezza e l\'intensità del tonno crudo, creando un abbinamento per contrasto di morbidezza e concordanza aromatica.' },
+                    'ostriche': { name: 'Ostriche', vino: 'Muscadet Sèvre et Maine sur lie AOC', annata: '2023', temperatura: '8°C', motivazione: 'Abbinamento territoriale classico della Bretagna. La spiccata mineralità e sapidità del Muscadet si abbinano per concordanza con le note iodate delle ostriche. L\'affinamento sur lie dona cremosità che bilancia la consistenza del mollusco.' },
+				    'tartare-tonno': { name: 'Tartare di tonno', vino: 'Fiano di Avellino DOCG', annata: '2023', temperatura: '10°C', motivazione: 'La struttura del Fiano e la sua mineralità vulcanica reggono la grassezza e l\'intensità del tonno crudo, creando un abbinamento per contrasto di morbidezza e concordanza aromatica.' },
                     'gamberi-crudi': { name: 'Gamberi crudi', vino: 'Greco di Tufo DOCG', annata: '2023', temperatura: '10°C', motivazione: 'L\'acidità sostenuta e la sapidità del Greco puliscono il palato dalla dolcezza dei gamberi crudi, mentre gli aromi agrumati si abbinano per concordanza con i profumi iodati del crostaceo.' },
                     'capesante-gratinate': { name: 'Capesante gratinate', vino: 'Verdicchio dei Castelli di Jesi DOC Classico Superiore', annata: '2022', temperatura: '10°C', motivazione: 'La struttura evoluta del Verdicchio Superiore regge la gratinatura e la grassezza, mentre l\'acidità fresca bilancia la dolcezza delle capesante per un equilibrio perfetto.' },
                     'insalata-mare': { name: 'Insalata di mare', vino: 'Vermentino di Gallura DOCG', annata: '2024', temperatura: '10°C', motivazione: 'La sapidità pronunciata e l\'acidità vivace del Vermentino di Gallura si abbinano per concordanza territoriale con i sapori iodati del mare, pulendo il palato dalle diverse consistenze.' },
@@ -3977,7 +4068,8 @@
                 return;
             }
             
-            const container = document.getElementById('categoriesList');
+            const container = document.get
+ElementById('categoriesList');
             container.innerHTML = '';
             let found = false;
             
